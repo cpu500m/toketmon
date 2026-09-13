@@ -1,165 +1,160 @@
 <p align="center">
-  <img src="docs/images/hero-encounter.png" alt="코딩 중 화면 위에 야생 포켓몬이 나타나고, 볼을 던져 잡는 장면" width="100%">
+  <img src="docs/images/hero-encounter.png" alt="A wild Pokémon appears over the screen while coding, and a ball is thrown to catch it" width="100%">
 </p>
 
 <h1 align="center">toketmon</h1>
 
-<p align="center"><b>코딩하면 포켓몬이 나온다.</b><br>
-Claude Code · Codex의 토큰 사용량을 포켓몬 수집 게임으로 바꿔주는 Windows 데스크톱 트레이 앱</p>
+<p align="center"><b>Code, and Pokémon appear.</b><br>
+A Windows desktop tray app that turns your Claude Code / Codex token usage into a Pokémon collecting game.</p>
 
 <p align="center">
-  <a href="https://github.com/cpu500m/toketmon/releases/latest"><img alt="최신 릴리스" src="https://img.shields.io/github/v/release/cpu500m/toketmon?label=%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C&color=f5c518"></a>
-  <img alt="Windows 10/11" src="https://img.shields.io/badge/Windows-10%20%2F%2011-0078d4">
-  <img alt="비상업 팬 프로젝트" src="https://img.shields.io/badge/%EB%B9%84%EC%83%81%EC%97%85-%ED%8C%AC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-6c757d">
+  <b>Current version: v0.6.0</b> · <b>Non-commercial, personal fan project</b><br>
+  Not affiliated with, endorsed by, or sponsored by Nintendo, Creatures Inc., GAME FREAK inc., or The Pokémon Company.
 </p>
 
----
-
-## 이런 앱입니다
-
-설치하고 켜 두기만 하면 됩니다. toketmon은 Claude Code(`~/.claude/projects`)와 Codex(`~/.codex/sessions`)의
-대화 로그를 실시간으로 감시해 토큰 사용량을 누적합니다. 토큰이 쌓이면 **야생 포켓몬이 화면 위에 나타나고**,
-볼·사탕·진화의 돌 같은 아이템이 드랍됩니다. 잡은 포켓몬은 상자에서 키우고, 진화시키고, 바탕화면에 산책시키고,
-같은 네트워크의 친구와 **5vs5 배틀**이나 **교환**을 할 수 있습니다.
-
-- 트레이에 상주하며 백그라운드에서 동작합니다. 코딩 흐름을 끊지 않습니다.
-- 포켓몬 종 데이터·스프라이트는 첫 실행 시 [PokeAPI](https://pokeapi.co/)에서 받아 로컬에 캐시합니다. 이후에는 오프라인에서도 동작합니다.
-- 1~5세대 649종을 지원합니다.
-
-## 주요 기능
-
-### 🌿 야생 조우 & 포획
-
-<img src="docs/images/wild.png" alt="야생 탭, 만난 포켓몬 목록과 남은 시간, 포획·도망 버튼" width="100%">
-
-- 평균 **약 6.67M 토큰**마다 야생 포켓몬이 한 마리 나타납니다. 등급은 **N / R / SR / SSR / UR**, 아주 드물게 ✨이로치(색이 다른 개체)가 등장합니다.
-- 나타난 포켓몬은 야생 탭에 쌓이고, 등급별 제한 시간(N·R 24시간 / SR 48시간 / SSR 72시간) 안에 잡지 않으면 사라집니다.
-- **포획**을 누르면 화면 위에 투명 오버레이가 뜨고 볼을 골라 던집니다. 몬스터볼·슈퍼볼·하이퍼볼·마스터볼 4종이 있고, 등급이 높을수록·볼이 약할수록 잡기 어렵습니다. 실패하면 도망갈 수도 있습니다.
-- 도감을 채울수록 **크리티컬 포획** 확률이 올라가고, 열매를 먹여 포획률을 높일 수도 있습니다.
-- 매일 첫 코딩 시 **몬스터볼 3개 + 확정 조우 1회**를 받습니다. 연속 접속 일수가 7일을 넘으면 이로치 확률이 올라갑니다.
-
-<img src="docs/images/encounter-caught.png" alt="포획 성공 연출, 신난다! 잡았다! 도감 등록" width="60%">
-
-### 📦 상자: 육성과 진화
-
-<img src="docs/images/storage.png" alt="상자 탭, 잡은 포켓몬 목록, 레벨과 다음 레벨까지 필요한 경험치, 산책·도구 사용·방생 버튼" width="100%">
-
-- 잡은 포켓몬은 상자에 보관됩니다. 이름 검색, 레벨·희귀도 정렬, 이로치·중복·희귀특성 필터, 즐겨찾기, 별명 붙이기를 지원합니다.
-- **사탕(XS~XL)** 을 먹이면 경험치가 오릅니다. 종마다 다른 6종 성장 곡선(PokeAPI `growth_rate`)을 그대로 따르므로 같은 사탕이라도 종에 따라 레벨이 오르는 속도가 다릅니다.
-- **진화**는 레벨 / 진화의 돌 / 지닌 물건 / 통신 교환 / 산책 친밀도 조건을 지원합니다. 분기 진화는 직접 고르고, 진화 연출이 재생됩니다.
-- 특성(숨겨진 특성 포함)·성격·종족값이 개체마다 있으며, 배틀에 반영됩니다.
-
-### 🐾 산책: 바탕화면 위의 포켓몬
-
-<img src="docs/images/walk-pets.png" alt="바탕화면 위를 걸어다니는 산책 중인 포켓몬" width="60%">
-
-- 상자에서 **산책**을 누르면 그 포켓몬이 모니터 위에 나타나 돌아다닙니다. 여러 마리를 동시에 풀어놓을 수 있습니다.
-- 산책 중인 포켓몬 중 ⚡ 표시된 **최대 3마리가 시간당 200 exp**를 받습니다. 친밀도 조건 진화도 산책으로 채웁니다.
-- 펫을 클릭해 선택한 뒤 단축키로 크기를 바꾸거나(U/D, 마우스 휠), 다른 창 앞/뒤로 보내거나(F/B), 볼에 넣어 귀가시킬 수 있습니다(Delete).
-
-### 📕 도감
-
-<img src="docs/images/dex.png" alt="도감 탭, 지역·등급 필터, 등록/미등록 종 카드" width="100%">
-
-- 관동·성도·호연·신오·하나 지역, 등급, 이로치, 포획 여부로 필터링할 수 있습니다.
-- 종을 누르면 타입·특성·종족값·기술을 볼 수 있습니다.
-- **100종 등록마다 마스터볼(포획 확정) 1개**가 자동 지급됩니다.
-
-### 🎒 가방 & 🐱 암시장
-
-<img src="docs/images/bag.png" alt="가방 탭, 볼, 사탕, 진화의 돌, 지닌 물건 인벤토리" width="100%">
-
-- 볼 4종, 사탕 5등급, 진화의 돌 9종, 지닌 물건 15종, 열매를 관리합니다. 아이템은 토큰을 쓸 때마다 확률로 드랍됩니다.
-
-<img src="docs/images/market.png" alt="암시장 탭, 나옹과 볼·아이템을 물물교환" width="100%">
-
-- **암시장**에는 하루 두 번(오전장·오후장) 장이 섭니다. 나옹에게 볼을 내고 상위 볼·열매·지닌 물건을 사거나, 남는 볼을 팔 수 있습니다.
-
-### ⚔️ 배틀: 친구와 5vs5 대전
-
-<img src="docs/images/battle.png" alt="배틀 화면, 양측 포켓몬과 HP 바, 턴 타이머, 기술 버튼" width="100%">
-
-같은 Wi-Fi/LAN(또는 같은 VPN) 안의 두 PC가 **앱끼리 직접 연결**해 실시간으로 대전합니다. 중계 서버가 없으므로 계정도 필요 없습니다.
-
-1. 한 사람이 통신 탭에서 **호스트 시작**을 누르면 초대 코드(IP:포트, 기본 5199)가 표시됩니다.
-2. 상대가 **접속하기**에 IP와 포트를 입력해 들어옵니다. Windows 방화벽 허용 팝업이 뜨면 호스트 쪽에서 허용해 주세요.
-3. 양쪽이 각자 상자에서 **5마리를 비공개로 선출**하면 팀 프리뷰가 공개되고 배틀이 시작됩니다.
-
-<img src="docs/images/battle-select.png" alt="선출 화면, 타입 필터와 검색으로 5마리를 고르는 모습" width="100%">
-
-배틀 규칙은 원작에 가깝게 구현했습니다.
-
-- 원작 데미지 공식, **18타입 상성표**, 물리/특수 구분, 자속 보정, 명중률, 급소(1/16)
-- 상태이상(마비·화상·독·잠듦·얼음·혼란), 능력 랭크 변화(−6~+6), **날씨**(비·쾌청·모래바람·싸라기눈)와 날씨 특성
-- 기술은 종별 4개가 고정되어 있고 레벨 1/15/30/45에 순서대로 해금됩니다. PP가 다 떨어지면 발버둥을 칩니다.
-- 매 턴 자유 교체, 턴당 **60초 제한**(초과 시 자동 행동), 항복 가능. 연결이 끊기면 상대의 승리로 처리됩니다.
-- 승패 기록은 **전적조회**에서 다시 볼 수 있습니다. 배틀 결과로 아이템을 잃거나 얻지는 않습니다.
-
-### 🔄 교환
-
-<img src="docs/images/trade.png" alt="교환 화면, 내 제안과 상대 제안을 확인하고 승인" width="100%">
-
-- 배틀과 같은 방식으로 연결한 뒤(기본 포트 5200), 서로 포켓몬 한 마리씩을 제시하고 **제안 확정 → 교환 승인**을 거치면 교환이 이뤄집니다.
-- 원작에서 통신 교환으로 진화하는 포켓몬(예: 고우스트 → 팬텀)은 교환을 거치면 진화합니다.
-
-### 🤖 자동 포획 & 기록
-
-<img src="docs/images/settings-autocatch.png" alt="설정 탭, 닉네임, 알림, 등급별 볼을 지정하는 자동 포획 옵션" width="100%">
-
-- **자동 포획**을 켜 두면 앱 창이 닫혀 있는 동안 나타난 야생 포켓몬을 자동으로 잡아 줍니다. 등급(N~UR)마다 어떤 볼을 쓸지, 볼이 부족하면 하위 볼로 대체할지, 이미 도감에 있는 종도 잡을지 정할 수 있습니다.
-- 기록 탭에서 놓친 포켓몬(도망·만료)과 자동 포획 회차별 결과(포획 / 도망 / 볼 부족)를 확인합니다.
-- 야생 조우·도구 획득 시 Windows 알림을 보냅니다. 부팅 시 자동 시작도 설정할 수 있습니다.
-
-### 그 밖에
-
-- 각 탭 우측 상단의 **메뉴 가이드**에서 포획 확률표, 타입 상성표, 랭크 배율표 등 모든 수치를 앱 안에서 확인할 수 있습니다.
-- 감시 중인 작업 폴더가 git 저장소면 커밋 수도 보상에 반영됩니다.
+<p align="center">English | <a href="README.ko.md">한국어</a></p>
 
 ---
 
-## 다운로드
+> **Language note:** The app UI is currently **Korean only**, and the screenshots below show the Korean UI.
+> In-app support for other languages is planned for a later release. This README is the English entry point in the meantime.
 
-최신 설치 파일은 [Releases](https://github.com/cpu500m/toketmon/releases/latest) 페이지에서
-`toketmon-<버전>-setup.exe`를 내려받으면 됩니다. 각 릴리스 본문이 그 버전의 패치노트입니다.
+## What it is
 
-이 저장소는 **설치 파일 배포 전용**입니다. 소스 코드는 포함되어 있지 않습니다.
+Install it, leave it running, and keep coding. toketmon watches your Claude Code and Codex session logs in the background
+and turns the tokens you use into rewards: **wild Pokémon appear on your screen**, and items like balls, candy, and
+evolution stones drop along the way. Catch them, raise them, evolve them, let them walk around your desktop, and battle or
+trade with a friend on the same network.
 
-## 설치 방법
+- Lives in the system tray and never interrupts your workflow.
+- Pokémon data and sprites are fetched from [PokeAPI](https://pokeapi.co/) on first launch and cached locally. Works offline afterwards.
+- Supports 649 species from Generations 1–5.
 
-1. 기존 toketmon이 실행 중이라면 먼저 종료해 주세요
-   (작업 표시줄 트레이의 토켓몬 아이콘 우클릭 → 종료).
-2. `toketmon-<버전>-setup.exe`를 실행합니다. 설치 경로를 선택할 수 있고, 관리자 권한 없이
-   현재 사용자 계정에만 설치됩니다.
-3. 최초 실행 시 포켓몬 종 데이터와 스프라이트 이미지를 인터넷([PokeAPI](https://pokeapi.co/))에서
-   자동으로 내려받습니다. 완료 전까지 잠시 기다려 주세요. 이후에는 로컬에 캐시되어
-   오프라인에서도 이어서 사용할 수 있습니다.
+## Features
 
-### Windows "PC 보호" 경고가 뜨는 경우
+### 🌿 Wild encounters & catching
 
-정식 코드 서명 인증서가 없어 Windows SmartScreen이 경고를 띄울 수 있습니다.
-창에서 **추가 정보**를 클릭한 뒤 **실행**을 누르면 설치가 진행됩니다.
+<img src="docs/images/wild.png" alt="Wild tab listing encountered Pokémon with rarity, time left, and catch buttons" width="100%">
 
-## 자동 업데이트
+- As you use tokens, wild Pokémon show up in the Wild tab. Rarity ranges from **N / R / SR / SSR / UR**, and shiny ✨ Pokémon appear very rarely.
+- Each encounter expires after a while, so catch it before it leaves.
+- Hit **Catch** (포획) and a transparent overlay appears on your screen. Pick a ball and throw. Higher rarity and weaker balls mean lower odds, and a failed throw may let the Pokémon flee.
+- Filling your Pokédex raises your critical-catch chance, and berries boost catch rates.
+- Your first coding session each day grants free balls and a guaranteed encounter. Daily streaks raise the shiny rate.
 
-v0.5.5부터 앱이 새 버전을 스스로 확인합니다. 새 버전이 있으면 앱 상단에
-"새로운 업데이트가 있습니다!" 배너가 뜨고, **다운로드** 버튼을 누르면 이 저장소의 Releases에서
-설치 파일을 받아 옵니다. 다운로드가 끝나면 패치노트를 보여주고, **지금 재시작하여 설치**를 누르면
-새 버전으로 바뀝니다. "나중에"를 누르면 설정 탭에서 언제든지 다시 받을 수 있습니다.
+<img src="docs/images/encounter-caught.png" alt="Catch success animation and Pokédex registration" width="60%">
 
-## 게임 데이터 위치
+### 📦 Storage: raising & evolution
 
-잡은 포켓몬·도감·아이템 등 게임 데이터는 `%APPDATA%\toketmon` 폴더에 저장됩니다.
-업데이트하거나 재설치해도 이 폴더는 삭제되지 않고 그대로 유지됩니다.
-완전히 초기화하고 싶다면 이 폴더를 직접 삭제하면 됩니다.
+<img src="docs/images/storage.png" alt="Storage tab with caught Pokémon, level and EXP, walk and item buttons" width="100%">
 
-## 고지
+- Caught Pokémon go to Storage. Search, sort, filter (shiny, duplicates, hidden ability), favorites, and nicknames are supported.
+- Feed **candy** to gain EXP. Each species follows its own growth curve from PokeAPI.
+- **Evolution** supports level, evolution stone, held item, trade, and walking-friendship conditions. Branching evolutions let you choose.
+- Every Pokémon has an ability (including hidden abilities), a nature, and base stats that carry into battle.
 
-- 본 프로그램은 **비상업·개인용 팬 프로젝트**이며, **수익 창출 목적이 없습니다.**
-  유료 판매, 광고, 후원 등 어떤 형태의 수익 활동도 하지 않습니다.
-- **Pokémon 및 관련 캐릭터·이름·이미지의 모든 권리는 Nintendo, Creatures Inc., GAME FREAK inc.
-  (The Pokémon Company)에 있습니다.** 본 프로젝트는 이들과 무관하며, 승인·후원·제휴 관계가 없습니다.
-- 포켓몬 종 데이터와 스프라이트 이미지는 앱 실행 시 [PokeAPI](https://pokeapi.co/)에서 받아와
-  사용자 PC에만 캐시합니다. 이 저장소와 배포되는 설치 파일에는 원작 자산이 포함되어 있지 않습니다.
-  이 문서의 스크린샷은 사용 화면을 설명하기 위한 것입니다.
-- 권리자의 요청이 있으면 즉시 배포를 중단합니다.
-- **권리자 문의·연락**: 이 저장소의 [Issues](https://github.com/cpu500m/toketmon/issues)에 남겨 주시면 확인 즉시 대응합니다.
+### 🐾 Walk: Pokémon on your desktop
+
+<img src="docs/images/walk-pets.png" alt="Pokémon walking around on the desktop" width="60%">
+
+- Press **Walk** (산책) in Storage and that Pokémon wanders around your monitor. You can release several at once.
+- Walking Pokémon earn EXP over time and build friendship for friendship-based evolutions.
+- Click a pet to select it, then resize it, send it in front of or behind other windows, or recall it to its ball with hotkeys.
+
+### 📕 Pokédex
+
+<img src="docs/images/dex.png" alt="Pokédex tab with region and rarity filters" width="100%">
+
+- Filter by region (Kanto to Unova), rarity, shiny, and caught status.
+- Open a species to see its types, abilities, base stats, and moves.
+- Registration milestones grant **Master Balls** (guaranteed catch).
+
+### 🎒 Bag & 🐱 Black Market
+
+<img src="docs/images/bag.png" alt="Bag tab with balls, candy, evolution stones, and held items" width="100%">
+
+- Manage balls, candy, evolution stones, held items, and berries. Items drop by chance as you use tokens.
+
+<img src="docs/images/market.png" alt="Black Market tab trading balls and items with Meowth" width="100%">
+
+- The **Black Market** opens twice a day. Trade balls with Meowth for better balls, berries, and held items, or sell what you don't need.
+
+### ⚔️ Battle: 5-vs-5 with a friend
+
+<img src="docs/images/battle.png" alt="Battle screen with both Pokémon, HP bars, turn timer, and move buttons" width="100%">
+
+Two PCs on the same Wi-Fi/LAN (or VPN) **connect directly** for real-time battles. No relay server, no account.
+
+1. One player presses **Host** (호스트 시작) in the Network tab and gets an invite code (IP:port).
+2. The other enters it under **Join** (접속하기). Allow the Windows Firewall prompt on the host side if it appears.
+3. Both players secretly **pick 5 Pokémon** from Storage, then team preview is revealed and the battle begins.
+
+<img src="docs/images/battle-select.png" alt="Team selection screen with type filter and search" width="100%">
+
+Battle rules stay close to the original games.
+
+- Original damage formula, **18-type matchup chart**, physical/special split, STAB, accuracy, and critical hits
+- Status conditions, stat stages, **weather** and weather abilities
+- Each species has 4 fixed moves unlocked by level. Out of PP means Struggle.
+- Free switching every turn, a **per-turn time limit** (auto-action on timeout), and forfeit. Disconnecting counts as a loss.
+- Results are kept in **Battle Records**. Battles never cost or grant items.
+
+### 🔄 Trade
+
+<img src="docs/images/trade.png" alt="Trade screen showing both offers and the confirm button" width="100%">
+
+- Connect the same way as a battle, offer one Pokémon each, then **confirm → approve** to complete the trade.
+- Pokémon that evolve by trading in the original games (e.g. Haunter → Gengar) evolve after a trade.
+
+### 🤖 Auto-catch & records
+
+<img src="docs/images/settings-autocatch.png" alt="Settings tab with nickname, notifications, and per-rarity auto-catch ball options" width="100%">
+
+- Turn on **Auto-catch** and wild Pokémon that appear while the window is closed are caught for you. Choose which ball to use per rarity, whether to fall back to a weaker ball, and whether to catch species you already own.
+- The Records tab lists missed Pokémon and every auto-catch result.
+
+<img src="docs/images/records.png" alt="Records tab with missed Pokémon and auto-catch results" width="100%">
+
+- Windows notifications for encounters and item drops, plus an optional start-on-boot setting.
+
+### And more
+
+- The **guide menu** at the top right of each tab shows every number in the app: catch-rate tables, the type chart, stat-stage multipliers, and so on.
+- If a watched project folder is a git repository, your commits count toward rewards too.
+
+---
+
+## Download
+
+Grab `toketmon-<version>-setup.exe` from the [latest release](https://github.com/cpu500m/toketmon/releases/latest).
+Each release description is that version's patch notes.
+
+This repository is **for distributing installers only** and does not contain source code.
+
+## Install
+
+1. If toketmon is already running, quit it first (right-click the tray icon → Quit).
+2. Run `toketmon-<version>-setup.exe`. You can choose the install location; no administrator rights are required.
+3. On first launch the app downloads Pokémon data and sprites from [PokeAPI](https://pokeapi.co/). Please wait until it finishes. Everything is cached locally afterwards.
+
+### If Windows shows a "protected your PC" warning
+
+The installer is not code-signed, so Windows SmartScreen may warn you. Click **More info**, then **Run anyway**.
+
+## Auto-update
+
+Since v0.5.5 the app checks for new versions on its own. When one is available, a banner appears at the top of the app.
+Press **Download**, then **Restart and install** once the patch notes are shown. You can postpone and update later from Settings.
+
+## Game data
+
+Your Pokémon, Pokédex, and items are stored in `%APPDATA%\toketmon`. Updating or reinstalling never deletes this folder.
+Delete it manually if you want a fresh start.
+
+## Notice
+
+- This is a **non-commercial, personal fan project** with **no revenue of any kind**: no sales, ads, or donations.
+- **All rights to Pokémon and related characters, names, and images belong to Nintendo, Creatures Inc., and GAME FREAK inc. (The Pokémon Company).** This project is not affiliated with, endorsed by, or sponsored by them.
+- Pokémon data and sprites are fetched from [PokeAPI](https://pokeapi.co/) at runtime and cached only on the user's PC. Neither this repository nor the installers contain any original assets. Screenshots in this document are for illustrating the app's UI.
+- Distribution will stop immediately upon request from the rights holders.
+- **Rights holder inquiries:** please open an [Issue](https://github.com/cpu500m/toketmon/issues) in this repository and it will be handled promptly.
