@@ -8,7 +8,7 @@
 Claude Code · Codex의 토큰 사용량을 포켓몬 수집 게임으로 바꿔주는 Windows 데스크톱 트레이 앱</p>
 
 <p align="center">
-  <b>현재 버전: v0.6.0</b> · <b>비상업·개인용 팬 프로젝트</b><br>
+  <b>현재 버전: v0.6.1</b> · <b>비상업·개인용 팬 프로젝트</b><br>
   Nintendo, Creatures Inc., GAME FREAK inc., The Pokémon Company와 무관하며 승인·후원·제휴 관계가 없습니다.
 </p>
 

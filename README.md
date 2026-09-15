@@ -8,7 +8,7 @@
 A Windows desktop tray app that turns your Claude Code / Codex token usage into a Pokémon collecting game.</p>
 
 <p align="center">
-  <b>Current version: v0.6.0</b> · <b>Non-commercial, personal fan project</b><br>
+  <b>Current version: v0.6.1</b> · <b>Non-commercial, personal fan project</b><br>
   Not affiliated with, endorsed by, or sponsored by Nintendo, Creatures Inc., GAME FREAK inc., or The Pokémon Company.
 </p>
 
